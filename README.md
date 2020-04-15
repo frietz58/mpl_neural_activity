@@ -1,8 +1,6 @@
 # What is this?
-Repo contains script that produce relatively complex animations (see example below) of hidden activations of different types of continuous 
+Repo contains script that produce relatively complex animations (see examples in `animations` folder) of hidden activations of different types of continuous 
 time recurrent neural networks. 
-
-[logo]: animations/animated-freqpreds-3x4-trace.gif "Logo Title Text 2"
 
 # Installation
 1. Clone the repo: 

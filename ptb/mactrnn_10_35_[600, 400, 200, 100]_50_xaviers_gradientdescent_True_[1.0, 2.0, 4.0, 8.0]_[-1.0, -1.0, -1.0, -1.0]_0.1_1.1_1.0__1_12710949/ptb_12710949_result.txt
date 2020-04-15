@@ -1,0 +1,817 @@
+Configuration ([94mmodified[0m, [92madded[0m, [91mtypechanged[0m, [90mdoc[0m):
+  activation = 'sigmoid'             [90m# 'sigmoid'[0m
+  batch_size = 20                    [90m# 20[0m
+  data_path = 'data'
+  dataset = 'ptb'
+  depth = 10                         [90m# the recurrence depth[0m
+  drop_h = 0.0                       [90m# 0.25  # Variational reg.[0m
+  drop_i = 0.0                       [90m# 0.75  # Variational reg.[0m
+  drop_o = 0.0                       [90m# 0.75  # Variational reg.[0m
+  drop_x = 0.0                       [90m# 0.25  # Variational reg.[0m
+  dropout_keep_prob = 1.0            [90m# recurrent dropout wrapper as an alternative to the default variational regularization[0m
+  evaluate_non_batched = False
+[94m  hidden_sizes = [600, 400, 200, 100]    [90m# [400, 300, 200, 100][0m[0m
+  init_bias = -2.0
+  init_method = 'xaviers'            [90m# 'random-uniform'[0m
+  init_scale = 0.04
+  learning_rate = 0.1                [90m# 0.1, other options 0.2 and 0.5 seem to large[0m
+  load_model = ''
+[94m  lr_decay = 1.1                     [90m# 1.02 was before, TA also tested 1.1[0m[0m
+  max_epoch = 20                     [90m# 20[0m
+  max_grad_norm = 10
+[94m  max_max_epoch = 50                 [90m# 20, 30, 50[0m[0m
+[94m  max_sigma = [-1.0, -1.0, -1.0, -1.0]    [90m# [0., 2., 8., 32.][0m[0m
+  mc_steps = 0                       [90m# testing procedure[0m
+[94m  network_type = 'mactrnn'           [90m# ctrnn, mctrnn, pavctrnn, pactrnn, mactrnn, pvctrnn, mvctrnn, vctrnn, srn, lstm, cwrnn, srn, *gru, *hwn : *(not integrated yet)[0m[0m
+  num_hidden_act_vals_outputs = 1
+  num_layers = 1
+[94m  num_modules = 4[0m
+  num_steps = 35                     [90m# 35, unfolding[0m
+[94m  optimization_seed = 1              [90m# the seed coming from the hyperopt_optimizer. Not used anywhere except for dir name[0m[0m
+[94m  output_models_directory = './results/ptb_hyperopt_final_models/'[0m
+[94m  output_results_directory = './results/ptb_hyperopt_final_results/'[0m
+[94m  save_training_model = True[0m
+[94m  seed = 12710949                    [90m# the random seed for this experiment[0m[0m
+[94m  tau = [1.0, 2.0, 4.0, 8.0]         [90m# [1., 4., 16., 64.][0m[0m
+  tied = True
+  train_method = 'gradientdescent'
+  visualise_results = False
+  vocab_size = 10000
+  weight_decay = 1e-07
+model/embedding:0 [10000, 1300]
+model/VCTRNN0/_w_tau:0 [1300]
+model/VCTRNN0/Linear/Matrix:0 [2600, 1300]
+model/VCTRNN0/Linear/Bias:0 [1300]
+model/softmax_b:0 [10000]
+16392600 total variables
+Epoch: 1 Learning rate: 0.100
+0.008 perplexity: 4801.525 speed: 3851 wps
+0.107 perplexity: 1627.850 speed: 7742 wps
+0.206 perplexity: 1283.875 speed: 7624 wps
+0.306 perplexity: 1138.409 speed: 7814 wps
+0.405 perplexity: 1059.137 speed: 7827 wps
+0.505 perplexity: 998.231 speed: 7807 wps
+0.604 perplexity: 934.855 speed: 7483 wps
+0.704 perplexity: 883.949 speed: 7079 wps
+0.803 perplexity: 840.067 speed: 6820 wps
+0.903 perplexity: 800.039 speed: 6606 wps
+Epoch: 1 Train Perplexity: 765.889, Bits: 9.581
+Epoch: 1 Valid Perplexity (batched): 529.664, Bits: 9.049
+Epoch: 1 Test Perplexity (batched): 511.599, Bits: 8.999
+Best Batched Valid Perplexity improved to 529.664
+Saved to: ./results/ptb_hyperopt_final_models/mactrnn_10_35_[600, 400, 200, 100]_50_xaviers_gradientdescent_True_[1.0, 2.0, 4.0, 8.0]_[-1.0, -1.0, -1.0, -1.0]_0.1_1.1_1.0__1_12710949/ptb_12710949_best_model.ckpt
+Epoch: 2 Learning rate: 0.100
+0.008 perplexity: 580.040 speed: 6623 wps
+0.107 perplexity: 477.407 speed: 5846 wps
+0.206 perplexity: 483.215 speed: 5545 wps
+0.306 perplexity: 470.388 speed: 5436 wps
+0.405 perplexity: 461.515 speed: 5498 wps
+0.505 perplexity: 453.528 speed: 5582 wps
+0.604 perplexity: 439.098 speed: 5576 wps
+0.704 perplexity: 428.461 speed: 5516 wps
+0.803 perplexity: 419.095 speed: 5482 wps
+0.903 perplexity: 408.792 speed: 5461 wps
+Epoch: 2 Train Perplexity: 399.882, Bits: 8.643
+Epoch: 2 Valid Perplexity (batched): 349.277, Bits: 8.448
+Epoch: 2 Test Perplexity (batched): 336.766, Bits: 8.396
+Best Batched Valid Perplexity improved to 349.277
+Saved to: ./results/ptb_hyperopt_final_models/mactrnn_10_35_[600, 400, 200, 100]_50_xaviers_gradientdescent_True_[1.0, 2.0, 4.0, 8.0]_[-1.0, -1.0, -1.0, -1.0]_0.1_1.1_1.0__1_12710949/ptb_12710949_best_model.ckpt
+Epoch: 3 Learning rate: 0.100
+0.008 perplexity: 383.666 speed: 4574 wps
+0.107 perplexity: 310.792 speed: 5243 wps
+0.206 perplexity: 320.084 speed: 5066 wps
+0.306 perplexity: 315.846 speed: 4898 wps
+0.405 perplexity: 313.642 speed: 4748 wps
+0.505 perplexity: 311.097 speed: 4726 wps
+0.604 perplexity: 303.941 speed: 4739 wps
+0.704 perplexity: 299.013 speed: 4719 wps
+0.803 perplexity: 294.905 speed: 4724 wps
+0.903 perplexity: 289.687 speed: 4712 wps
+Epoch: 3 Train Perplexity: 285.417, Bits: 8.157
+Epoch: 3 Valid Perplexity (batched): 272.585, Bits: 8.091
+Epoch: 3 Test Perplexity (batched): 263.404, Bits: 8.041
+Best Batched Valid Perplexity improved to 272.585
+Saved to: ./results/ptb_hyperopt_final_models/mactrnn_10_35_[600, 400, 200, 100]_50_xaviers_gradientdescent_True_[1.0, 2.0, 4.0, 8.0]_[-1.0, -1.0, -1.0, -1.0]_0.1_1.1_1.0__1_12710949/ptb_12710949_best_model.ckpt
+Epoch: 4 Learning rate: 0.100
+0.008 perplexity: 296.173 speed: 3940 wps
+0.107 perplexity: 237.839 speed: 4618 wps
+0.206 perplexity: 248.534 speed: 4789 wps
+0.306 perplexity: 245.921 speed: 4841 wps
+0.405 perplexity: 245.635 speed: 4934 wps
+0.505 perplexity: 244.643 speed: 4996 wps
+0.604 perplexity: 240.077 speed: 5018 wps
+0.704 perplexity: 237.373 speed: 5028 wps
+0.803 perplexity: 235.044 speed: 5039 wps
+0.903 perplexity: 231.688 speed: 5063 wps
+Epoch: 4 Train Perplexity: 229.133, Bits: 7.840
+Epoch: 4 Valid Perplexity (batched): 232.009, Bits: 7.858
+Epoch: 4 Test Perplexity (batched): 223.543, Bits: 7.804
+Best Batched Valid Perplexity improved to 232.009
+Saved to: ./results/ptb_hyperopt_final_models/mactrnn_10_35_[600, 400, 200, 100]_50_xaviers_gradientdescent_True_[1.0, 2.0, 4.0, 8.0]_[-1.0, -1.0, -1.0, -1.0]_0.1_1.1_1.0__1_12710949/ptb_12710949_best_model.ckpt
+Epoch: 5 Learning rate: 0.100
+0.008 perplexity: 248.563 speed: 5244 wps
+0.107 perplexity: 198.340 speed: 4810 wps
+0.206 perplexity: 208.559 speed: 4565 wps
+0.306 perplexity: 206.586 speed: 4426 wps
+0.405 perplexity: 206.941 speed: 4536 wps
+0.505 perplexity: 206.505 speed: 4665 wps
+0.604 perplexity: 203.127 speed: 4719 wps
+0.704 perplexity: 201.498 speed: 4760 wps
+0.803 perplexity: 200.021 speed: 4813 wps
+0.903 perplexity: 197.475 speed: 4852 wps
+Epoch: 5 Train Perplexity: 195.669, Bits: 7.612
+Epoch: 5 Valid Perplexity (batched): 207.342, Bits: 7.696
+Epoch: 5 Test Perplexity (batched): 199.270, Bits: 7.639
+Best Batched Valid Perplexity improved to 207.342
+Saved to: ./results/ptb_hyperopt_final_models/mactrnn_10_35_[600, 400, 200, 100]_50_xaviers_gradientdescent_True_[1.0, 2.0, 4.0, 8.0]_[-1.0, -1.0, -1.0, -1.0]_0.1_1.1_1.0__1_12710949/ptb_12710949_best_model.ckpt
+Epoch: 6 Learning rate: 0.100
+0.008 perplexity: 218.171 speed: 5068 wps
+0.107 perplexity: 172.433 speed: 4942 wps
+0.206 perplexity: 182.330 speed: 5030 wps
+0.306 perplexity: 180.647 speed: 5041 wps
+0.405 perplexity: 181.197 speed: 5081 wps
+0.505 perplexity: 180.971 speed: 5071 wps
+0.604 perplexity: 178.202 speed: 5102 wps
+0.704 perplexity: 177.174 speed: 5113 wps
+0.803 perplexity: 176.163 speed: 5129 wps
+0.903 perplexity: 174.050 speed: 5120 wps
+Epoch: 6 Train Perplexity: 172.653, Bits: 7.432
+Epoch: 6 Valid Perplexity (batched): 189.618, Bits: 7.567
+Epoch: 6 Test Perplexity (batched): 181.891, Bits: 7.507
+Best Batched Valid Perplexity improved to 189.618
+Saved to: ./results/ptb_hyperopt_final_models/mactrnn_10_35_[600, 400, 200, 100]_50_xaviers_gradientdescent_True_[1.0, 2.0, 4.0, 8.0]_[-1.0, -1.0, -1.0, -1.0]_0.1_1.1_1.0__1_12710949/ptb_12710949_best_model.ckpt
+Epoch: 7 Learning rate: 0.100
+0.008 perplexity: 195.578 speed: 5756 wps
+0.107 perplexity: 153.674 speed: 5006 wps
+0.206 perplexity: 163.283 speed: 5004 wps
+0.306 perplexity: 161.709 speed: 4979 wps
+0.405 perplexity: 162.289 speed: 5038 wps
+0.505 perplexity: 162.154 speed: 5028 wps
+0.604 perplexity: 159.772 speed: 5011 wps
+0.704 perplexity: 159.105 speed: 5022 wps
+0.803 perplexity: 158.369 speed: 5039 wps
+0.903 perplexity: 156.527 speed: 5072 wps
+Epoch: 7 Train Perplexity: 155.404, Bits: 7.280
+Epoch: 7 Valid Perplexity (batched): 177.060, Bits: 7.468
+Epoch: 7 Test Perplexity (batched): 169.701, Bits: 7.407
+Best Batched Valid Perplexity improved to 177.060
+Saved to: ./results/ptb_hyperopt_final_models/mactrnn_10_35_[600, 400, 200, 100]_50_xaviers_gradientdescent_True_[1.0, 2.0, 4.0, 8.0]_[-1.0, -1.0, -1.0, -1.0]_0.1_1.1_1.0__1_12710949/ptb_12710949_best_model.ckpt
+Epoch: 8 Learning rate: 0.100
+0.008 perplexity: 178.037 speed: 5598 wps
+0.107 perplexity: 139.284 speed: 5158 wps
+0.206 perplexity: 148.648 speed: 5044 wps
+0.306 perplexity: 147.106 speed: 5085 wps
+0.405 perplexity: 147.659 speed: 5086 wps
+0.505 perplexity: 147.565 speed: 5094 wps
+0.604 perplexity: 145.459 speed: 5105 wps
+0.704 perplexity: 145.023 speed: 5120 wps
+0.803 perplexity: 144.477 speed: 5121 wps
+0.903 perplexity: 142.809 speed: 5109 wps
+Epoch: 8 Train Perplexity: 141.883, Bits: 7.149
+Epoch: 8 Valid Perplexity (batched): 167.166, Bits: 7.385
+Epoch: 8 Test Perplexity (batched): 160.105, Bits: 7.323
+Best Batched Valid Perplexity improved to 167.166
+Saved to: ./results/ptb_hyperopt_final_models/mactrnn_10_35_[600, 400, 200, 100]_50_xaviers_gradientdescent_True_[1.0, 2.0, 4.0, 8.0]_[-1.0, -1.0, -1.0, -1.0]_0.1_1.1_1.0__1_12710949/ptb_12710949_best_model.ckpt
+Epoch: 9 Learning rate: 0.100
+0.008 perplexity: 163.744 speed: 4540 wps
+0.107 perplexity: 127.798 speed: 5167 wps
+0.206 perplexity: 136.875 speed: 5235 wps
+0.306 perplexity: 135.339 speed: 5270 wps
+0.405 perplexity: 135.856 speed: 5254 wps
+0.505 perplexity: 135.753 speed: 5228 wps
+0.604 perplexity: 133.867 speed: 5224 wps
+0.704 perplexity: 133.590 speed: 5207 wps
+0.803 perplexity: 133.191 speed: 5192 wps
+0.903 perplexity: 131.643 speed: 5180 wps
+Epoch: 9 Train Perplexity: 130.855, Bits: 7.032
+Epoch: 9 Valid Perplexity (batched): 159.102, Bits: 7.314
+Epoch: 9 Test Perplexity (batched): 152.369, Bits: 7.251
+Best Batched Valid Perplexity improved to 159.102
+Saved to: ./results/ptb_hyperopt_final_models/mactrnn_10_35_[600, 400, 200, 100]_50_xaviers_gradientdescent_True_[1.0, 2.0, 4.0, 8.0]_[-1.0, -1.0, -1.0, -1.0]_0.1_1.1_1.0__1_12710949/ptb_12710949_best_model.ckpt
+Epoch: 10 Learning rate: 0.100
+0.008 perplexity: 151.671 speed: 5208 wps
+0.107 perplexity: 118.133 speed: 5080 wps
+0.206 perplexity: 127.006 speed: 5085 wps
+0.306 perplexity: 125.476 speed: 5125 wps
+0.405 perplexity: 125.956 speed: 5158 wps
+0.505 perplexity: 125.857 speed: 5184 wps
+0.604 perplexity: 124.146 speed: 5151 wps
+0.704 perplexity: 123.992 speed: 5128 wps
+0.803 perplexity: 123.694 speed: 5130 wps
+0.903 perplexity: 122.239 speed: 5137 wps
+Epoch: 10 Train Perplexity: 121.577, Bits: 6.926
+Epoch: 10 Valid Perplexity (batched): 152.714, Bits: 7.255
+Epoch: 10 Test Perplexity (batched): 146.266, Bits: 7.192
+Best Batched Valid Perplexity improved to 152.714
+Saved to: ./results/ptb_hyperopt_final_models/mactrnn_10_35_[600, 400, 200, 100]_50_xaviers_gradientdescent_True_[1.0, 2.0, 4.0, 8.0]_[-1.0, -1.0, -1.0, -1.0]_0.1_1.1_1.0__1_12710949/ptb_12710949_best_model.ckpt
+Epoch: 11 Learning rate: 0.100
+0.008 perplexity: 141.353 speed: 5232 wps
+0.107 perplexity: 109.930 speed: 5257 wps
+0.206 perplexity: 118.580 speed: 5084 wps
+0.306 perplexity: 117.033 speed: 5082 wps
+0.405 perplexity: 117.475 speed: 5103 wps
+0.505 perplexity: 117.376 speed: 5094 wps
+0.604 perplexity: 115.798 speed: 5094 wps
+0.704 perplexity: 115.742 speed: 5095 wps
+0.803 perplexity: 115.533 speed: 5095 wps
+0.903 perplexity: 114.158 speed: 5104 wps
+Epoch: 11 Train Perplexity: 113.585, Bits: 6.828
+Epoch: 11 Valid Perplexity (batched): 146.855, Bits: 7.198
+Epoch: 11 Test Perplexity (batched): 140.777, Bits: 7.137
+Best Batched Valid Perplexity improved to 146.855
+Saved to: ./results/ptb_hyperopt_final_models/mactrnn_10_35_[600, 400, 200, 100]_50_xaviers_gradientdescent_True_[1.0, 2.0, 4.0, 8.0]_[-1.0, -1.0, -1.0, -1.0]_0.1_1.1_1.0__1_12710949/ptb_12710949_best_model.ckpt
+Epoch: 12 Learning rate: 0.100
+0.008 perplexity: 133.398 speed: 4308 wps
+0.107 perplexity: 102.851 speed: 5154 wps
+0.206 perplexity: 111.293 speed: 5175 wps
+0.306 perplexity: 109.713 speed: 5167 wps
+0.405 perplexity: 110.124 speed: 5203 wps
+0.505 perplexity: 110.026 speed: 5197 wps
+0.604 perplexity: 108.561 speed: 5190 wps
+0.704 perplexity: 108.578 speed: 5176 wps
+0.803 perplexity: 108.435 speed: 5164 wps
+0.903 perplexity: 107.135 speed: 5171 wps
+Epoch: 12 Train Perplexity: 106.638, Bits: 6.737
+Epoch: 12 Valid Perplexity (batched): 142.323, Bits: 7.153
+Epoch: 12 Test Perplexity (batched): 136.544, Bits: 7.093
+Best Batched Valid Perplexity improved to 142.323
+Saved to: ./results/ptb_hyperopt_final_models/mactrnn_10_35_[600, 400, 200, 100]_50_xaviers_gradientdescent_True_[1.0, 2.0, 4.0, 8.0]_[-1.0, -1.0, -1.0, -1.0]_0.1_1.1_1.0__1_12710949/ptb_12710949_best_model.ckpt
+Epoch: 13 Learning rate: 0.100
+0.008 perplexity: 124.675 speed: 5666 wps
+0.107 perplexity: 96.542 speed: 4880 wps
+0.206 perplexity: 104.814 speed: 4920 wps
+0.306 perplexity: 103.235 speed: 5092 wps
+0.405 perplexity: 103.622 speed: 5137 wps
+0.505 perplexity: 103.542 speed: 5110 wps
+0.604 perplexity: 102.188 speed: 5126 wps
+0.704 perplexity: 102.273 speed: 5118 wps
+0.803 perplexity: 102.183 speed: 5147 wps
+0.903 perplexity: 100.952 speed: 5152 wps
+Epoch: 13 Train Perplexity: 100.526, Bits: 6.651
+Epoch: 13 Valid Perplexity (batched): 138.508, Bits: 7.114
+Epoch: 13 Test Perplexity (batched): 133.081, Bits: 7.056
+Best Batched Valid Perplexity improved to 138.508
+Saved to: ./results/ptb_hyperopt_final_models/mactrnn_10_35_[600, 400, 200, 100]_50_xaviers_gradientdescent_True_[1.0, 2.0, 4.0, 8.0]_[-1.0, -1.0, -1.0, -1.0]_0.1_1.1_1.0__1_12710949/ptb_12710949_best_model.ckpt
+Epoch: 14 Learning rate: 0.100
+0.008 perplexity: 117.346 speed: 5282 wps
+0.107 perplexity: 91.028 speed: 5325 wps
+0.206 perplexity: 99.112 speed: 5192 wps
+0.306 perplexity: 97.540 speed: 5167 wps
+0.405 perplexity: 97.893 speed: 5182 wps
+0.505 perplexity: 97.817 speed: 5146 wps
+0.604 perplexity: 96.549 speed: 5142 wps
+0.704 perplexity: 96.680 speed: 5130 wps
+0.803 perplexity: 96.627 speed: 5155 wps
+0.903 perplexity: 95.457 speed: 5151 wps
+Epoch: 14 Train Perplexity: 95.083, Bits: 6.571
+Epoch: 14 Valid Perplexity (batched): 135.326, Bits: 7.080
+Epoch: 14 Test Perplexity (batched): 130.221, Bits: 7.025
+Best Batched Valid Perplexity improved to 135.326
+Saved to: ./results/ptb_hyperopt_final_models/mactrnn_10_35_[600, 400, 200, 100]_50_xaviers_gradientdescent_True_[1.0, 2.0, 4.0, 8.0]_[-1.0, -1.0, -1.0, -1.0]_0.1_1.1_1.0__1_12710949/ptb_12710949_best_model.ckpt
+Epoch: 15 Learning rate: 0.100
+0.008 perplexity: 110.902 speed: 5096 wps
+0.107 perplexity: 86.144 speed: 5298 wps
+0.206 perplexity: 94.030 speed: 5175 wps
+0.306 perplexity: 92.466 speed: 5183 wps
+0.405 perplexity: 92.761 speed: 5158 wps
+0.505 perplexity: 92.681 speed: 5175 wps
+0.604 perplexity: 91.489 speed: 5158 wps
+0.704 perplexity: 91.651 speed: 5176 wps
+0.803 perplexity: 91.639 speed: 5166 wps
+0.903 perplexity: 90.525 speed: 5156 wps
+Epoch: 15 Train Perplexity: 90.194, Bits: 6.495
+Epoch: 15 Valid Perplexity (batched): 132.408, Bits: 7.049
+Epoch: 15 Test Perplexity (batched): 127.590, Bits: 6.995
+Best Batched Valid Perplexity improved to 132.408
+Saved to: ./results/ptb_hyperopt_final_models/mactrnn_10_35_[600, 400, 200, 100]_50_xaviers_gradientdescent_True_[1.0, 2.0, 4.0, 8.0]_[-1.0, -1.0, -1.0, -1.0]_0.1_1.1_1.0__1_12710949/ptb_12710949_best_model.ckpt
+Epoch: 16 Learning rate: 0.100
+0.008 perplexity: 104.890 speed: 5038 wps
+0.107 perplexity: 81.690 speed: 5063 wps
+0.206 perplexity: 89.357 speed: 5008 wps
+0.306 perplexity: 87.832 speed: 5098 wps
+0.405 perplexity: 88.094 speed: 5104 wps
+0.505 perplexity: 88.016 speed: 5120 wps
+0.604 perplexity: 86.886 speed: 5115 wps
+0.704 perplexity: 87.085 speed: 5083 wps
+0.803 perplexity: 87.096 speed: 5112 wps
+0.903 perplexity: 86.034 speed: 5099 wps
+Epoch: 16 Train Perplexity: 85.729, Bits: 6.422
+Epoch: 16 Valid Perplexity (batched): 129.795, Bits: 7.020
+Epoch: 16 Test Perplexity (batched): 125.239, Bits: 6.969
+Best Batched Valid Perplexity improved to 129.795
+Saved to: ./results/ptb_hyperopt_final_models/mactrnn_10_35_[600, 400, 200, 100]_50_xaviers_gradientdescent_True_[1.0, 2.0, 4.0, 8.0]_[-1.0, -1.0, -1.0, -1.0]_0.1_1.1_1.0__1_12710949/ptb_12710949_best_model.ckpt
+Epoch: 17 Learning rate: 0.100
+0.008 perplexity: 100.000 speed: 4961 wps
+0.107 perplexity: 77.630 speed: 4947 wps
+0.206 perplexity: 85.103 speed: 5075 wps
+0.306 perplexity: 83.607 speed: 5146 wps
+0.405 perplexity: 83.852 speed: 5168 wps
+0.505 perplexity: 83.775 speed: 5157 wps
+0.604 perplexity: 82.702 speed: 5136 wps
+0.704 perplexity: 82.924 speed: 5134 wps
+0.803 perplexity: 82.954 speed: 5120 wps
+0.903 perplexity: 81.936 speed: 5105 wps
+Epoch: 17 Train Perplexity: 81.656, Bits: 6.351
+Epoch: 17 Valid Perplexity (batched): 127.705, Bits: 6.997
+Epoch: 17 Test Perplexity (batched): 123.391, Bits: 6.947
+Best Batched Valid Perplexity improved to 127.705
+Saved to: ./results/ptb_hyperopt_final_models/mactrnn_10_35_[600, 400, 200, 100]_50_xaviers_gradientdescent_True_[1.0, 2.0, 4.0, 8.0]_[-1.0, -1.0, -1.0, -1.0]_0.1_1.1_1.0__1_12710949/ptb_12710949_best_model.ckpt
+Epoch: 18 Learning rate: 0.100
+0.008 perplexity: 94.835 speed: 5058 wps
+0.107 perplexity: 73.967 speed: 5076 wps
+0.206 perplexity: 81.200 speed: 5141 wps
+0.306 perplexity: 79.733 speed: 5130 wps
+0.405 perplexity: 79.946 speed: 5113 wps
+0.505 perplexity: 79.873 speed: 5120 wps
+0.604 perplexity: 78.852 speed: 5128 wps
+0.704 perplexity: 79.092 speed: 5129 wps
+0.803 perplexity: 79.138 speed: 5118 wps
+0.903 perplexity: 78.164 speed: 5098 wps
+Epoch: 18 Train Perplexity: 77.909, Bits: 6.284
+Epoch: 18 Valid Perplexity (batched): 126.241, Bits: 6.980
+Epoch: 18 Test Perplexity (batched): 122.085, Bits: 6.932
+Best Batched Valid Perplexity improved to 126.241
+Saved to: ./results/ptb_hyperopt_final_models/mactrnn_10_35_[600, 400, 200, 100]_50_xaviers_gradientdescent_True_[1.0, 2.0, 4.0, 8.0]_[-1.0, -1.0, -1.0, -1.0]_0.1_1.1_1.0__1_12710949/ptb_12710949_best_model.ckpt
+Epoch: 19 Learning rate: 0.100
+0.008 perplexity: 90.572 speed: 4360 wps
+0.107 perplexity: 70.539 speed: 5133 wps
+0.206 perplexity: 77.580 speed: 5097 wps
+0.306 perplexity: 76.127 speed: 5161 wps
+0.405 perplexity: 76.324 speed: 5159 wps
+0.505 perplexity: 76.250 speed: 5101 wps
+0.604 perplexity: 75.287 speed: 5118 wps
+0.704 perplexity: 75.542 speed: 5113 wps
+0.803 perplexity: 75.600 speed: 5107 wps
+0.903 perplexity: 74.664 speed: 5098 wps
+Epoch: 19 Train Perplexity: 74.427, Bits: 6.218
+Epoch: 19 Valid Perplexity (batched): 124.730, Bits: 6.963
+Epoch: 19 Test Perplexity (batched): 120.797, Bits: 6.916
+Best Batched Valid Perplexity improved to 124.730
+Saved to: ./results/ptb_hyperopt_final_models/mactrnn_10_35_[600, 400, 200, 100]_50_xaviers_gradientdescent_True_[1.0, 2.0, 4.0, 8.0]_[-1.0, -1.0, -1.0, -1.0]_0.1_1.1_1.0__1_12710949/ptb_12710949_best_model.ckpt
+Epoch: 20 Learning rate: 0.100
+0.008 perplexity: 86.407 speed: 4249 wps
+0.107 perplexity: 67.335 speed: 5038 wps
+0.206 perplexity: 74.181 speed: 5064 wps
+0.306 perplexity: 72.783 speed: 5043 wps
+0.405 perplexity: 72.948 speed: 5074 wps
+0.505 perplexity: 72.882 speed: 5084 wps
+0.604 perplexity: 71.957 speed: 5076 wps
+0.704 perplexity: 72.231 speed: 5093 wps
+0.803 perplexity: 72.300 speed: 5064 wps
+0.903 perplexity: 71.398 speed: 5070 wps
+Epoch: 20 Train Perplexity: 71.181, Bits: 6.153
+Epoch: 20 Valid Perplexity (batched): 123.561, Bits: 6.949
+Epoch: 20 Test Perplexity (batched): 119.674, Bits: 6.903
+Best Batched Valid Perplexity improved to 123.561
+Saved to: ./results/ptb_hyperopt_final_models/mactrnn_10_35_[600, 400, 200, 100]_50_xaviers_gradientdescent_True_[1.0, 2.0, 4.0, 8.0]_[-1.0, -1.0, -1.0, -1.0]_0.1_1.1_1.0__1_12710949/ptb_12710949_best_model.ckpt
+Epoch: 21 Learning rate: 0.091
+0.008 perplexity: 82.514 speed: 4615 wps
+0.107 perplexity: 64.064 speed: 5079 wps
+0.206 perplexity: 70.544 speed: 5135 wps
+0.306 perplexity: 69.136 speed: 5135 wps
+0.405 perplexity: 69.273 speed: 5168 wps
+0.505 perplexity: 69.198 speed: 5180 wps
+0.604 perplexity: 68.306 speed: 5204 wps
+0.704 perplexity: 68.567 speed: 5192 wps
+0.803 perplexity: 68.621 speed: 5179 wps
+0.903 perplexity: 67.745 speed: 5167 wps
+Epoch: 21 Train Perplexity: 67.530, Bits: 6.077
+Epoch: 21 Valid Perplexity (batched): 122.099, Bits: 6.932
+Epoch: 21 Test Perplexity (batched): 118.479, Bits: 6.888
+Best Batched Valid Perplexity improved to 122.099
+Saved to: ./results/ptb_hyperopt_final_models/mactrnn_10_35_[600, 400, 200, 100]_50_xaviers_gradientdescent_True_[1.0, 2.0, 4.0, 8.0]_[-1.0, -1.0, -1.0, -1.0]_0.1_1.1_1.0__1_12710949/ptb_12710949_best_model.ckpt
+Epoch: 22 Learning rate: 0.083
+0.008 perplexity: 79.072 speed: 4841 wps
+0.107 perplexity: 61.121 speed: 4957 wps
+0.206 perplexity: 67.299 speed: 5027 wps
+0.306 perplexity: 65.937 speed: 4981 wps
+0.405 perplexity: 66.065 speed: 5017 wps
+0.505 perplexity: 65.983 speed: 5042 wps
+0.604 perplexity: 65.127 speed: 5029 wps
+0.704 perplexity: 65.380 speed: 5027 wps
+0.803 perplexity: 65.428 speed: 5030 wps
+0.903 perplexity: 64.581 speed: 5026 wps
+Epoch: 22 Train Perplexity: 64.376, Bits: 6.008
+Epoch: 22 Valid Perplexity (batched): 120.956, Bits: 6.918
+Epoch: 22 Test Perplexity (batched): 117.520, Bits: 6.877
+Best Batched Valid Perplexity improved to 120.956
+Saved to: ./results/ptb_hyperopt_final_models/mactrnn_10_35_[600, 400, 200, 100]_50_xaviers_gradientdescent_True_[1.0, 2.0, 4.0, 8.0]_[-1.0, -1.0, -1.0, -1.0]_0.1_1.1_1.0__1_12710949/ptb_12710949_best_model.ckpt
+Epoch: 23 Learning rate: 0.075
+0.008 perplexity: 75.693 speed: 4803 wps
+0.107 perplexity: 58.531 speed: 5040 wps
+0.206 perplexity: 64.487 speed: 5072 wps
+0.306 perplexity: 63.158 speed: 5028 wps
+0.405 perplexity: 63.273 speed: 5049 wps
+0.505 perplexity: 63.186 speed: 5054 wps
+0.604 perplexity: 62.360 speed: 5030 wps
+0.704 perplexity: 62.608 speed: 5048 wps
+0.803 perplexity: 62.655 speed: 5051 wps
+0.903 perplexity: 61.836 speed: 5068 wps
+Epoch: 23 Train Perplexity: 61.639, Bits: 5.946
+Epoch: 23 Valid Perplexity (batched): 120.093, Bits: 6.908
+Epoch: 23 Test Perplexity (batched): 116.691, Bits: 6.867
+Best Batched Valid Perplexity improved to 120.093
+Saved to: ./results/ptb_hyperopt_final_models/mactrnn_10_35_[600, 400, 200, 100]_50_xaviers_gradientdescent_True_[1.0, 2.0, 4.0, 8.0]_[-1.0, -1.0, -1.0, -1.0]_0.1_1.1_1.0__1_12710949/ptb_12710949_best_model.ckpt
+Epoch: 24 Learning rate: 0.068
+0.008 perplexity: 72.884 speed: 4721 wps
+0.107 perplexity: 56.301 speed: 5128 wps
+0.206 perplexity: 62.021 speed: 5212 wps
+0.306 perplexity: 60.723 speed: 5167 wps
+0.405 perplexity: 60.831 speed: 5122 wps
+0.505 perplexity: 60.743 speed: 5110 wps
+0.604 perplexity: 59.944 speed: 5108 wps
+0.704 perplexity: 60.195 speed: 5082 wps
+0.803 perplexity: 60.240 speed: 5107 wps
+0.903 perplexity: 59.447 speed: 5113 wps
+Epoch: 24 Train Perplexity: 59.255, Bits: 5.889
+Epoch: 24 Valid Perplexity (batched): 119.431, Bits: 6.900
+Epoch: 24 Test Perplexity (batched): 116.113, Bits: 6.859
+Best Batched Valid Perplexity improved to 119.431
+Saved to: ./results/ptb_hyperopt_final_models/mactrnn_10_35_[600, 400, 200, 100]_50_xaviers_gradientdescent_True_[1.0, 2.0, 4.0, 8.0]_[-1.0, -1.0, -1.0, -1.0]_0.1_1.1_1.0__1_12710949/ptb_12710949_best_model.ckpt
+Epoch: 25 Learning rate: 0.062
+0.008 perplexity: 70.535 speed: 5171 wps
+0.107 perplexity: 54.340 speed: 5190 wps
+0.206 perplexity: 59.870 speed: 5156 wps
+0.306 perplexity: 58.600 speed: 5209 wps
+0.405 perplexity: 58.697 speed: 5188 wps
+0.505 perplexity: 58.609 speed: 5152 wps
+0.604 perplexity: 57.835 speed: 5135 wps
+0.704 perplexity: 58.095 speed: 5114 wps
+0.803 perplexity: 58.139 speed: 5097 wps
+0.903 perplexity: 57.364 speed: 5100 wps
+Epoch: 25 Train Perplexity: 57.177, Bits: 5.837
+Epoch: 25 Valid Perplexity (batched): 118.969, Bits: 6.894
+Epoch: 25 Test Perplexity (batched): 115.726, Bits: 6.855
+Best Batched Valid Perplexity improved to 118.969
+Saved to: ./results/ptb_hyperopt_final_models/mactrnn_10_35_[600, 400, 200, 100]_50_xaviers_gradientdescent_True_[1.0, 2.0, 4.0, 8.0]_[-1.0, -1.0, -1.0, -1.0]_0.1_1.1_1.0__1_12710949/ptb_12710949_best_model.ckpt
+Epoch: 26 Learning rate: 0.056
+0.008 perplexity: 68.259 speed: 4984 wps
+0.107 perplexity: 52.651 speed: 5002 wps
+0.206 perplexity: 58.001 speed: 4948 wps
+0.306 perplexity: 56.749 speed: 4982 wps
+0.405 perplexity: 56.843 speed: 4987 wps
+0.505 perplexity: 56.746 speed: 4985 wps
+0.604 perplexity: 55.991 speed: 4946 wps
+0.704 perplexity: 56.241 speed: 4958 wps
+0.803 perplexity: 56.284 speed: 4977 wps
+0.903 perplexity: 55.529 speed: 4988 wps
+Epoch: 26 Train Perplexity: 55.342, Bits: 5.790
+Epoch: 26 Valid Perplexity (batched): 118.667, Bits: 6.891
+Epoch: 26 Test Perplexity (batched): 115.435, Bits: 6.851
+Best Batched Valid Perplexity improved to 118.667
+Saved to: ./results/ptb_hyperopt_final_models/mactrnn_10_35_[600, 400, 200, 100]_50_xaviers_gradientdescent_True_[1.0, 2.0, 4.0, 8.0]_[-1.0, -1.0, -1.0, -1.0]_0.1_1.1_1.0__1_12710949/ptb_12710949_best_model.ckpt
+Epoch: 27 Learning rate: 0.051
+0.008 perplexity: 66.265 speed: 5147 wps
+0.107 perplexity: 51.116 speed: 5087 wps
+0.206 perplexity: 56.327 speed: 5135 wps
+0.306 perplexity: 55.086 speed: 5085 wps
+0.405 perplexity: 55.179 speed: 5096 wps
+0.505 perplexity: 55.077 speed: 5088 wps
+0.604 perplexity: 54.346 speed: 5076 wps
+0.704 perplexity: 54.592 speed: 5059 wps
+0.803 perplexity: 54.637 speed: 5087 wps
+0.903 perplexity: 53.901 speed: 5097 wps
+Epoch: 27 Train Perplexity: 53.717, Bits: 5.747
+Epoch: 27 Valid Perplexity (batched): 118.367, Bits: 6.887
+Epoch: 27 Test Perplexity (batched): 115.047, Bits: 6.846
+Best Batched Valid Perplexity improved to 118.367
+Saved to: ./results/ptb_hyperopt_final_models/mactrnn_10_35_[600, 400, 200, 100]_50_xaviers_gradientdescent_True_[1.0, 2.0, 4.0, 8.0]_[-1.0, -1.0, -1.0, -1.0]_0.1_1.1_1.0__1_12710949/ptb_12710949_best_model.ckpt
+Epoch: 28 Learning rate: 0.047
+0.008 perplexity: 64.472 speed: 5726 wps
+0.107 perplexity: 49.753 speed: 5263 wps
+0.206 perplexity: 54.838 speed: 5199 wps
+0.306 perplexity: 53.623 speed: 5187 wps
+0.405 perplexity: 53.712 speed: 5154 wps
+0.505 perplexity: 53.614 speed: 5108 wps
+0.604 perplexity: 52.899 speed: 5074 wps
+0.704 perplexity: 53.140 speed: 5083 wps
+0.803 perplexity: 53.189 speed: 5085 wps
+0.903 perplexity: 52.469 speed: 5079 wps
+Epoch: 28 Train Perplexity: 52.285, Bits: 5.708
+Epoch: 28 Valid Perplexity (batched): 118.186, Bits: 6.885
+Epoch: 28 Test Perplexity (batched): 114.815, Bits: 6.843
+Best Batched Valid Perplexity improved to 118.186
+Saved to: ./results/ptb_hyperopt_final_models/mactrnn_10_35_[600, 400, 200, 100]_50_xaviers_gradientdescent_True_[1.0, 2.0, 4.0, 8.0]_[-1.0, -1.0, -1.0, -1.0]_0.1_1.1_1.0__1_12710949/ptb_12710949_best_model.ckpt
+Epoch: 29 Learning rate: 0.042
+0.008 perplexity: 63.073 speed: 5273 wps
+0.107 perplexity: 48.557 speed: 5153 wps
+0.206 perplexity: 53.523 speed: 5155 wps
+0.306 perplexity: 52.323 speed: 5117 wps
+0.405 perplexity: 52.409 speed: 5125 wps
+0.505 perplexity: 52.305 speed: 5125 wps
+0.604 perplexity: 51.605 speed: 5120 wps
+0.704 perplexity: 51.844 speed: 5138 wps
+0.803 perplexity: 51.891 speed: 5141 wps
+0.903 perplexity: 51.184 speed: 5133 wps
+Epoch: 29 Train Perplexity: 51.005, Bits: 5.673
+Epoch: 29 Valid Perplexity (batched): 117.960, Bits: 6.882
+Epoch: 29 Test Perplexity (batched): 114.624, Bits: 6.841
+Best Batched Valid Perplexity improved to 117.960
+Saved to: ./results/ptb_hyperopt_final_models/mactrnn_10_35_[600, 400, 200, 100]_50_xaviers_gradientdescent_True_[1.0, 2.0, 4.0, 8.0]_[-1.0, -1.0, -1.0, -1.0]_0.1_1.1_1.0__1_12710949/ptb_12710949_best_model.ckpt
+Epoch: 30 Learning rate: 0.039
+0.008 perplexity: 61.729 speed: 4945 wps
+0.107 perplexity: 47.488 speed: 5193 wps
+0.206 perplexity: 52.340 speed: 5007 wps
+0.306 perplexity: 51.163 speed: 5095 wps
+0.405 perplexity: 51.250 speed: 5111 wps
+0.505 perplexity: 51.149 speed: 5131 wps
+0.604 perplexity: 50.461 speed: 5130 wps
+0.704 perplexity: 50.698 speed: 5112 wps
+0.803 perplexity: 50.744 speed: 5107 wps
+0.903 perplexity: 50.052 speed: 5112 wps
+Epoch: 30 Train Perplexity: 49.876, Bits: 5.640
+Epoch: 30 Valid Perplexity (batched): 117.830, Bits: 6.881
+Epoch: 30 Test Perplexity (batched): 114.465, Bits: 6.839
+Best Batched Valid Perplexity improved to 117.830
+Saved to: ./results/ptb_hyperopt_final_models/mactrnn_10_35_[600, 400, 200, 100]_50_xaviers_gradientdescent_True_[1.0, 2.0, 4.0, 8.0]_[-1.0, -1.0, -1.0, -1.0]_0.1_1.1_1.0__1_12710949/ptb_12710949_best_model.ckpt
+Epoch: 31 Learning rate: 0.035
+0.008 perplexity: 60.490 speed: 4804 wps
+0.107 perplexity: 46.546 speed: 5274 wps
+0.206 perplexity: 51.296 speed: 5143 wps
+0.306 perplexity: 50.136 speed: 5155 wps
+0.405 perplexity: 50.219 speed: 5156 wps
+0.505 perplexity: 50.115 speed: 5161 wps
+0.604 perplexity: 49.437 speed: 5159 wps
+0.704 perplexity: 49.668 speed: 5180 wps
+0.803 perplexity: 49.714 speed: 5142 wps
+0.903 perplexity: 49.033 speed: 5122 wps
+Epoch: 31 Train Perplexity: 48.860, Bits: 5.611
+Epoch: 31 Valid Perplexity (batched): 117.701, Bits: 6.879
+Epoch: 31 Test Perplexity (batched): 114.335, Bits: 6.837
+Best Batched Valid Perplexity improved to 117.701
+Saved to: ./results/ptb_hyperopt_final_models/mactrnn_10_35_[600, 400, 200, 100]_50_xaviers_gradientdescent_True_[1.0, 2.0, 4.0, 8.0]_[-1.0, -1.0, -1.0, -1.0]_0.1_1.1_1.0__1_12710949/ptb_12710949_best_model.ckpt
+Epoch: 32 Learning rate: 0.032
+0.008 perplexity: 59.442 speed: 5606 wps
+0.107 perplexity: 45.692 speed: 5247 wps
+0.206 perplexity: 50.351 speed: 5199 wps
+0.306 perplexity: 49.208 speed: 5178 wps
+0.405 perplexity: 49.293 speed: 5182 wps
+0.505 perplexity: 49.191 speed: 5206 wps
+0.604 perplexity: 48.525 speed: 5201 wps
+0.704 perplexity: 48.755 speed: 5199 wps
+0.803 perplexity: 48.800 speed: 5173 wps
+0.903 perplexity: 48.129 speed: 5171 wps
+Epoch: 32 Train Perplexity: 47.958, Bits: 5.584
+Epoch: 32 Valid Perplexity (batched): 117.708, Bits: 6.879
+Epoch: 32 Test Perplexity (batched): 114.279, Bits: 6.836
+Epoch: 33 Learning rate: 0.029
+0.008 perplexity: 58.435 speed: 4604 wps
+0.107 perplexity: 44.924 speed: 5104 wps
+0.206 perplexity: 49.504 speed: 5160 wps
+0.306 perplexity: 48.377 speed: 5120 wps
+0.405 perplexity: 48.466 speed: 5084 wps
+0.505 perplexity: 48.363 speed: 5121 wps
+0.604 perplexity: 47.709 speed: 5135 wps
+0.704 perplexity: 47.936 speed: 5149 wps
+0.803 perplexity: 47.982 speed: 5142 wps
+0.903 perplexity: 47.319 speed: 5131 wps
+Epoch: 33 Train Perplexity: 47.149, Bits: 5.559
+Epoch: 33 Valid Perplexity (batched): 117.690, Bits: 6.879
+Epoch: 33 Test Perplexity (batched): 114.213, Bits: 6.836
+Best Batched Valid Perplexity improved to 117.690
+Saved to: ./results/ptb_hyperopt_final_models/mactrnn_10_35_[600, 400, 200, 100]_50_xaviers_gradientdescent_True_[1.0, 2.0, 4.0, 8.0]_[-1.0, -1.0, -1.0, -1.0]_0.1_1.1_1.0__1_12710949/ptb_12710949_best_model.ckpt
+Epoch: 34 Learning rate: 0.026
+0.008 perplexity: 57.566 speed: 4894 wps
+0.107 perplexity: 44.254 speed: 5190 wps
+0.206 perplexity: 48.758 speed: 5094 wps
+0.306 perplexity: 47.637 speed: 5149 wps
+0.405 perplexity: 47.727 speed: 5200 wps
+0.505 perplexity: 47.623 speed: 5155 wps
+0.604 perplexity: 46.976 speed: 5179 wps
+0.704 perplexity: 47.201 speed: 5188 wps
+0.803 perplexity: 47.246 speed: 5190 wps
+0.903 perplexity: 46.593 speed: 5188 wps
+Epoch: 34 Train Perplexity: 46.425, Bits: 5.537
+Epoch: 34 Valid Perplexity (batched): 117.656, Bits: 6.878
+Epoch: 34 Test Perplexity (batched): 114.159, Bits: 6.835
+Best Batched Valid Perplexity improved to 117.656
+Saved to: ./results/ptb_hyperopt_final_models/mactrnn_10_35_[600, 400, 200, 100]_50_xaviers_gradientdescent_True_[1.0, 2.0, 4.0, 8.0]_[-1.0, -1.0, -1.0, -1.0]_0.1_1.1_1.0__1_12710949/ptb_12710949_best_model.ckpt
+Epoch: 35 Learning rate: 0.024
+0.008 perplexity: 56.684 speed: 5498 wps
+0.107 perplexity: 43.628 speed: 5156 wps
+0.206 perplexity: 48.070 speed: 5187 wps
+0.306 perplexity: 46.968 speed: 5192 wps
+0.405 perplexity: 47.062 speed: 5195 wps
+0.505 perplexity: 46.957 speed: 5189 wps
+0.604 perplexity: 46.318 speed: 5207 wps
+0.704 perplexity: 46.543 speed: 5212 wps
+0.803 perplexity: 46.590 speed: 5205 wps
+0.903 perplexity: 45.943 speed: 5213 wps
+Epoch: 35 Train Perplexity: 45.777, Bits: 5.517
+Epoch: 35 Valid Perplexity (batched): 117.665, Bits: 6.879
+Epoch: 35 Test Perplexity (batched): 114.118, Bits: 6.834
+Epoch: 36 Learning rate: 0.022
+0.008 perplexity: 55.937 speed: 4875 wps
+0.107 perplexity: 43.066 speed: 4832 wps
+0.206 perplexity: 47.457 speed: 5070 wps
+0.306 perplexity: 46.370 speed: 5055 wps
+0.405 perplexity: 46.462 speed: 5084 wps
+0.505 perplexity: 46.359 speed: 5117 wps
+0.604 perplexity: 45.728 speed: 5117 wps
+0.704 perplexity: 45.953 speed: 5114 wps
+0.803 perplexity: 45.998 speed: 5148 wps
+0.903 perplexity: 45.358 speed: 5160 wps
+Epoch: 36 Train Perplexity: 45.194, Bits: 5.498
+Epoch: 36 Valid Perplexity (batched): 117.760, Bits: 6.880
+Epoch: 36 Test Perplexity (batched): 114.163, Bits: 6.835
+Epoch: 37 Learning rate: 0.020
+0.008 perplexity: 55.320 speed: 4851 wps
+0.107 perplexity: 42.573 speed: 5092 wps
+0.206 perplexity: 46.912 speed: 5210 wps
+0.306 perplexity: 45.829 speed: 5192 wps
+0.405 perplexity: 45.924 speed: 5173 wps
+0.505 perplexity: 45.822 speed: 5136 wps
+0.604 perplexity: 45.196 speed: 5135 wps
+0.704 perplexity: 45.421 speed: 5154 wps
+0.803 perplexity: 45.464 speed: 5140 wps
+0.903 perplexity: 44.831 speed: 5126 wps
+Epoch: 37 Train Perplexity: 44.668, Bits: 5.481
+Epoch: 37 Valid Perplexity (batched): 117.786, Bits: 6.880
+Epoch: 37 Test Perplexity (batched): 114.137, Bits: 6.835
+Epoch: 38 Learning rate: 0.018
+0.008 perplexity: 54.693 speed: 4897 wps
+0.107 perplexity: 42.118 speed: 5036 wps
+0.206 perplexity: 46.417 speed: 5009 wps
+0.306 perplexity: 45.344 speed: 5027 wps
+0.405 perplexity: 45.439 speed: 4996 wps
+0.505 perplexity: 45.338 speed: 5031 wps
+0.604 perplexity: 44.717 speed: 5027 wps
+0.704 perplexity: 44.941 speed: 5070 wps
+0.803 perplexity: 44.983 speed: 5068 wps
+0.903 perplexity: 44.356 speed: 5042 wps
+Epoch: 38 Train Perplexity: 44.195, Bits: 5.466
+Epoch: 38 Valid Perplexity (batched): 117.807, Bits: 6.880
+Epoch: 38 Test Perplexity (batched): 114.153, Bits: 6.835
+Epoch: 39 Learning rate: 0.016
+0.008 perplexity: 54.155 speed: 5087 wps
+0.107 perplexity: 41.721 speed: 5254 wps
+0.206 perplexity: 45.983 speed: 5317 wps
+0.306 perplexity: 44.915 speed: 5276 wps
+0.405 perplexity: 45.008 speed: 5250 wps
+0.505 perplexity: 44.908 speed: 5227 wps
+0.604 perplexity: 44.292 speed: 5226 wps
+0.704 perplexity: 44.513 speed: 5204 wps
+0.803 perplexity: 44.556 speed: 5173 wps
+0.903 perplexity: 43.934 speed: 5171 wps
+Epoch: 39 Train Perplexity: 43.773, Bits: 5.452
+Epoch: 39 Valid Perplexity (batched): 117.843, Bits: 6.881
+Epoch: 39 Test Perplexity (batched): 114.162, Bits: 6.835
+Epoch: 40 Learning rate: 0.015
+0.008 perplexity: 53.691 speed: 4747 wps
+0.107 perplexity: 41.355 speed: 5272 wps
+0.206 perplexity: 45.579 speed: 5039 wps
+0.306 perplexity: 44.521 speed: 5096 wps
+0.405 perplexity: 44.618 speed: 5024 wps
+0.505 perplexity: 44.519 speed: 5031 wps
+0.604 perplexity: 43.907 speed: 5049 wps
+0.704 perplexity: 44.126 speed: 5071 wps
+0.803 perplexity: 44.169 speed: 5070 wps
+0.903 perplexity: 43.551 speed: 5060 wps
+Epoch: 40 Train Perplexity: 43.391, Bits: 5.439
+Epoch: 40 Valid Perplexity (batched): 117.920, Bits: 6.882
+Epoch: 40 Test Perplexity (batched): 114.210, Bits: 6.836
+Epoch: 41 Learning rate: 0.014
+0.008 perplexity: 53.283 speed: 5174 wps
+0.107 perplexity: 41.035 speed: 5022 wps
+0.206 perplexity: 45.224 speed: 5111 wps
+0.306 perplexity: 44.169 speed: 5186 wps
+0.405 perplexity: 44.265 speed: 5128 wps
+0.505 perplexity: 44.168 speed: 5129 wps
+0.604 perplexity: 43.560 speed: 5119 wps
+0.704 perplexity: 43.777 speed: 5126 wps
+0.803 perplexity: 43.819 speed: 5115 wps
+0.903 perplexity: 43.205 speed: 5099 wps
+Epoch: 41 Train Perplexity: 43.046, Bits: 5.428
+Epoch: 41 Valid Perplexity (batched): 117.938, Bits: 6.882
+Epoch: 41 Test Perplexity (batched): 114.204, Bits: 6.835
+Epoch: 42 Learning rate: 0.012
+0.008 perplexity: 52.886 speed: 5324 wps
+0.107 perplexity: 40.740 speed: 4902 wps
+0.206 perplexity: 44.903 speed: 5090 wps
+0.306 perplexity: 43.854 speed: 5118 wps
+0.405 perplexity: 43.949 speed: 5095 wps
+0.505 perplexity: 43.849 speed: 5079 wps
+0.604 perplexity: 43.245 speed: 5045 wps
+0.704 perplexity: 43.461 speed: 5047 wps
+0.803 perplexity: 43.503 speed: 5042 wps
+0.903 perplexity: 42.893 speed: 5039 wps
+Epoch: 42 Train Perplexity: 42.734, Bits: 5.417
+Epoch: 42 Valid Perplexity (batched): 117.961, Bits: 6.882
+Epoch: 42 Test Perplexity (batched): 114.227, Bits: 6.836
+Epoch: 43 Learning rate: 0.011
+0.008 perplexity: 52.538 speed: 5407 wps
+0.107 perplexity: 40.491 speed: 5327 wps
+0.206 perplexity: 44.618 speed: 5307 wps
+0.306 perplexity: 43.570 speed: 5285 wps
+0.405 perplexity: 43.664 speed: 5199 wps
+0.505 perplexity: 43.565 speed: 5167 wps
+0.604 perplexity: 42.964 speed: 5152 wps
+0.704 perplexity: 43.179 speed: 5139 wps
+0.803 perplexity: 43.220 speed: 5118 wps
+0.903 perplexity: 42.613 speed: 5105 wps
+Epoch: 43 Train Perplexity: 42.455, Bits: 5.408
+Epoch: 43 Valid Perplexity (batched): 118.011, Bits: 6.883
+Epoch: 43 Test Perplexity (batched): 114.234, Bits: 6.836
+Epoch: 44 Learning rate: 0.010
+0.008 perplexity: 52.234 speed: 4759 wps
+0.107 perplexity: 40.251 speed: 5201 wps
+0.206 perplexity: 44.353 speed: 5229 wps
+0.306 perplexity: 43.311 speed: 5159 wps
+0.405 perplexity: 43.406 speed: 5157 wps
+0.505 perplexity: 43.307 speed: 5146 wps
+0.604 perplexity: 42.711 speed: 5133 wps
+0.704 perplexity: 42.924 speed: 5114 wps
+0.803 perplexity: 42.965 speed: 5105 wps
+0.903 perplexity: 42.361 speed: 5115 wps
+Epoch: 44 Train Perplexity: 42.203, Bits: 5.399
+Epoch: 44 Valid Perplexity (batched): 118.046, Bits: 6.883
+Epoch: 44 Test Perplexity (batched): 114.248, Bits: 6.836
+Epoch: 45 Learning rate: 0.009
+0.008 perplexity: 51.962 speed: 4843 wps
+0.107 perplexity: 40.033 speed: 5066 wps
+0.206 perplexity: 44.112 speed: 5018 wps
+0.306 perplexity: 43.076 speed: 5035 wps
+0.405 perplexity: 43.171 speed: 5096 wps
+0.505 perplexity: 43.072 speed: 5095 wps
+0.604 perplexity: 42.480 speed: 5122 wps
+0.704 perplexity: 42.691 speed: 5122 wps
+0.803 perplexity: 42.733 speed: 5121 wps
+0.903 perplexity: 42.131 speed: 5105 wps
+Epoch: 45 Train Perplexity: 41.974, Bits: 5.391
+Epoch: 45 Valid Perplexity (batched): 118.094, Bits: 6.884
+Epoch: 45 Test Perplexity (batched): 114.292, Bits: 6.837
+Epoch: 46 Learning rate: 0.008
+0.008 perplexity: 51.713 speed: 4570 wps
+0.107 perplexity: 39.838 speed: 5001 wps
+0.206 perplexity: 43.898 speed: 5099 wps
+0.306 perplexity: 42.863 speed: 5145 wps
+0.405 perplexity: 42.959 speed: 5122 wps
+0.505 perplexity: 42.862 speed: 5134 wps
+0.604 perplexity: 42.272 speed: 5134 wps
+0.704 perplexity: 42.483 speed: 5133 wps
+0.803 perplexity: 42.523 speed: 5102 wps
+0.903 perplexity: 41.924 speed: 5108 wps
+Epoch: 46 Train Perplexity: 41.768, Bits: 5.384
+Epoch: 46 Valid Perplexity (batched): 118.122, Bits: 6.884
+Epoch: 46 Test Perplexity (batched): 114.294, Bits: 6.837
+Epoch: 47 Learning rate: 0.008
+0.008 perplexity: 51.499 speed: 4954 wps
+0.107 perplexity: 39.663 speed: 5188 wps
+0.206 perplexity: 43.703 speed: 5219 wps
+0.306 perplexity: 42.672 speed: 5173 wps
+0.405 perplexity: 42.767 speed: 5150 wps
+0.505 perplexity: 42.671 speed: 5131 wps
+0.604 perplexity: 42.084 speed: 5126 wps
+0.704 perplexity: 42.295 speed: 5115 wps
+0.803 perplexity: 42.335 speed: 5110 wps
+0.903 perplexity: 41.738 speed: 5122 wps
+Epoch: 47 Train Perplexity: 41.582, Bits: 5.378
+Epoch: 47 Valid Perplexity (batched): 118.179, Bits: 6.885
+Epoch: 47 Test Perplexity (batched): 114.326, Bits: 6.837
+Epoch: 48 Learning rate: 0.007
+0.008 perplexity: 51.294 speed: 4485 wps
+0.107 perplexity: 39.506 speed: 5149 wps
+0.206 perplexity: 43.530 speed: 5077 wps
+0.306 perplexity: 42.501 speed: 5157 wps
+0.405 perplexity: 42.595 speed: 5162 wps
+0.505 perplexity: 42.501 speed: 5133 wps
+0.604 perplexity: 41.916 speed: 5116 wps
+0.704 perplexity: 42.126 speed: 5108 wps
+0.803 perplexity: 42.165 speed: 5097 wps
+0.903 perplexity: 41.570 speed: 5083 wps
+Epoch: 48 Train Perplexity: 41.415, Bits: 5.372
+Epoch: 48 Valid Perplexity (batched): 118.186, Bits: 6.885
+Epoch: 48 Test Perplexity (batched): 114.333, Bits: 6.837
+Epoch: 49 Learning rate: 0.006
+0.008 perplexity: 51.095 speed: 5367 wps
+0.107 perplexity: 39.359 speed: 5211 wps
+0.206 perplexity: 43.369 speed: 5204 wps
+0.306 perplexity: 42.342 speed: 5170 wps
+0.405 perplexity: 42.437 speed: 5210 wps
+0.505 perplexity: 42.345 speed: 5219 wps
+0.604 perplexity: 41.762 speed: 5196 wps
+0.704 perplexity: 41.971 speed: 5179 wps
+0.803 perplexity: 42.010 speed: 5175 wps
+0.903 perplexity: 41.417 speed: 5165 wps
+Epoch: 49 Train Perplexity: 41.262, Bits: 5.367
+Epoch: 49 Valid Perplexity (batched): 118.247, Bits: 6.886
+Epoch: 49 Test Perplexity (batched): 114.356, Bits: 6.837
+Epoch: 50 Learning rate: 0.006
+0.008 perplexity: 50.945 speed: 4900 wps
+0.107 perplexity: 39.234 speed: 5179 wps
+0.206 perplexity: 43.229 speed: 5262 wps
+0.306 perplexity: 42.202 speed: 5199 wps
+0.405 perplexity: 42.297 speed: 5145 wps
+0.505 perplexity: 42.205 speed: 5167 wps
+0.604 perplexity: 41.625 speed: 5163 wps
+0.704 perplexity: 41.833 speed: 5132 wps
+0.803 perplexity: 41.872 speed: 5130 wps
+0.903 perplexity: 41.279 speed: 5153 wps
+Epoch: 50 Train Perplexity: 41.125, Bits: 5.362
+Epoch: 50 Valid Perplexity (batched): 118.254, Bits: 6.886
+Epoch: 50 Test Perplexity (batched): 114.357, Bits: 6.837
+Training is over.
+Best Batched Validation Perplexity 117.656 (Bits: 6.878) was at Epoch 34
+Training Perplexity at this Epoch was 46.425, Bits: 5.537
+Batched Test Perplexity at this Epoch was 114.159, Bits: 6.835
+Finish time: d1803222311

@@ -1,0 +1,1 @@
+These are old versions of the two scripts in the root directory. I am not sure whether these still work, I just didn't want to delete them. If you want to use them, copy them into the root directory of this repo, so that the paths work.

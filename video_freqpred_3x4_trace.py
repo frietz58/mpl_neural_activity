@@ -25,7 +25,7 @@ LATEST_DP = 0
 VIEWPORT_WIDTH = 100
 FRAMES = None
 TRACE_DECAY_GAMMA = 0.5
-C_THEME = "STH"
+C_THEME = "STH_dark"
 CPAL = get_color_dict(C_THEME)
 
 
@@ -294,9 +294,18 @@ def main():
         [], [], lw=NEURONS_LINE_WIDTH, label=NEURON_1_LABEL, ls=NEURONS_LINE_STYLE, c=CPAL["neuron_1"])
 
     # for later iteration
-    pred_artists = [
-        [ctrnn_pred_n0, ctrnn_pred_n1], [actrnn_pred_n0, actrnn_pred_n1], [vctrnn_pred_0, vctrnn_pred_1],
-        [avctrnn_pred_0, avctrnn_pred_1], [lstm_pred_0, lstm_pred_1], [srn_pred_0, srn_pred_1]]
+    #pred_artists = [
+    #    [ctrnn_pred_n0, ctrnn_pred_n1], [actrnn_pred_n0, actrnn_pred_n1], [vctrnn_pred_0, vctrnn_pred_1],
+    #    [avctrnn_pred_0, avctrnn_pred_1], [lstm_pred_0, lstm_pred_1], [srn_pred_0, srn_pred_1]]
+
+    pred_artists = {
+        "mctrnn": [ctrnn_pred_n0, ctrnn_pred_n1],
+        "mactrnn": [actrnn_pred_n0, actrnn_pred_n1],
+        "mvctrnn": [vctrnn_pred_0, vctrnn_pred_1],
+        "mavctrnn": [avctrnn_pred_0, avctrnn_pred_1],
+        "mlstm": [lstm_pred_0, lstm_pred_1],
+        "msrn": [srn_pred_0, srn_pred_1]
+    }
 
     # load target preds outside of loops
     target_preds = np.transpose(np.load('eval/freqpred/vctrnn_freqpred_test_targetvals.npz')['arr_0'][0, :, :])
@@ -412,7 +421,10 @@ def animate(i,
         LATEST_DP += 1
         x = freqpred_x_inds[0:LATEST_DP]
 
-        for artists, pred_model in zip(pred_artists, pred_data):
+        # for artists, pred_model in zip(pred_artists, pred_data):
+        for pred_model in pred_data:
+            artists = pred_artists[pred_model]
+
             data = pred_data[pred_model]
             for neuron in range(len(artists)):
                 # append new y
@@ -423,9 +435,22 @@ def animate(i,
                 try:
                     artists[neuron].set_data(x, activations)
                     flat_artists.append(artists[neuron])
+
+                    # sanity check: model name should be in title of subplot
+                    subplot_title = artists[neuron].axes.title._text.lower()
+                    assert_msg = "Model name '{}' does not appear to occur in subplot title '{}'".format(
+                        pred_model, subplot_title)
+                    assert pred_model[1:] in subplot_title, assert_msg  # cut preceding "m" from model name ...
+
                 except AttributeError:
                     artists[neuron][0].set_data(x, activations)
                     flat_artists.append(artists[neuron][0])
+
+                    # sanity check: model name should be in title of subplot
+                    subplot_title = artists[neuron][0].axes.title._text.lower()
+                    assert_msg = "Model name '{}' does not appear to occur in subplot title '{}'".format(
+                                pred_model, subplot_title)
+                    assert pred_model[1:] in subplot_title, assert_msg  # cut preceding "m" from model name ...
 
     # update the time indicator on every frame, not just when we update the plot data
     for pred_model in pred_data:

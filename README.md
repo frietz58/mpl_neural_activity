@@ -1,6 +1,7 @@
 # What is this?
 Repo contains script that produce relatively complex animations (see examples in `animations` folder) of hidden activations of different types of continuous 
-time recurrent neural networks. 
+time recurrent neural networks. Alternatively, here is a screenshot:
+![example_screenshot](animations/3x4_example.png)
 
 # Installation
 1. Clone the repo: 
